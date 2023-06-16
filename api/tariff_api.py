@@ -13,8 +13,7 @@ async def tariff_ping():
 
 
 @tariff_router.get("/get-tarifes-for-view/{language}")
-@auth_required
-async def get_tarifes_for_view(language: Language, authorize=Header(None)):
+async def get_tarifes_for_view(language: Language):
     _tarifes_for_view = await TariffServiceManager.get_tarifes_for_view(language.value)
     if not _tarifes_for_view:
         return HTTPException(404)
