@@ -1,5 +1,5 @@
 from repository.tariff_db_manager.tariff_db_manager import TariffDbManager
-from models.tariff_model.tariff_model import TarifModelForView, InnerModelForTarif
+from models.tariff_model.tariff_model import TarifModelForView, InnerModelForTarif, PersonalTarifForCreating
 from service.tariff_service_manager.tariff_service_interface import TarifServiceInterface
 
 
@@ -54,6 +54,18 @@ class TariffServiceManager(TarifServiceInterface):
             if not _tariff_details:
                 return None
             return _tariff_details
+        except Exception as e:
+            print(e)
+            return
+
+    @staticmethod
+    async def check_summ_and_return(item):
+        try:
+            summ_ = item.mobile_cass_price * item.mobile_cass_count + \
+                    item.cass_stantion_count * item.cass_stantion_price + \
+                    item.mobile_cass_count * item.mobile_cass_price + \
+                    item.web_manager_price * item.web_manager_count
+            return summ_
         except Exception as e:
             print(e)
             return

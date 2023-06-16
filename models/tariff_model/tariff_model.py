@@ -44,3 +44,16 @@ class TarifModelForView(BaseModel):
         if month_prices <= 0:
             return "FREE"
         return month_prices
+
+
+class PersonalTarifForCreating(BaseModel):
+    cass_stantion_price: int | None = Field(gt=0)
+    mobile_cass_price: int | None = Field(gt=0)
+    mobile_manager_price: int | None = Field(gt=0)
+    web_manager_price: int | None = Field(gt=0)
+    cass_stantion_count: int | None = Field(gt=-1)
+    mobile_cass_count: int | None = Field(gt=-1)
+    mobile_manager_count: int | None = Field(gt=-1)
+    web_manager_count: int | None = Field(gt=-1)
+
+    tarif_month: int | None = 1

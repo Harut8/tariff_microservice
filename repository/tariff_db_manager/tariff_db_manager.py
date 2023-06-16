@@ -18,5 +18,5 @@ class TariffDbManager(TariffDbInterface):
         _tariff_details = await fetch_transaction(
             """select * from get_tarif_details($1)""",
             tariff_id)
-        print(_tariff_details)
         return _tariff_details
+
