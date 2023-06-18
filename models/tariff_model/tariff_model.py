@@ -20,15 +20,19 @@ class InnerModelForTarif(BaseModel):
     cassa_names: str = None
     cassa_counts: int = None
     cassa_prices: int = None
+    cassa_inf_prices: int = None
     manager_names: str = None
     manager_counts: int = None
     manager_prices: int = None
+    manager_inf_prices: int = None
     web_names: str = None
     web_counts: int = None
     web_prices: int = None
+    web_inf_prices: int = None
     mobile_cassa_names: str = None
     mobile_cassa_counts: int = None
     mobile_prices: int = None
+    mobile_inf_prices: int = None
     tarifes_others: list[str] = None
 
 

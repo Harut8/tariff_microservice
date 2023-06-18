@@ -27,15 +27,19 @@ class TariffServiceManager(TarifServiceInterface):
                             cassa_names=i['cassa_names'][lan_],
                             cassa_counts=i['cassa_counts'],
                             cassa_prices=i['c_per_price'],
+                            cassa_inf_prices=i['c_inf_price'],
                             manager_names=i['manager_names'][lan_],
                             manager_counts=i['manager_counts'],
                             manager_prices=i['m_per_price'],
+                            manager_inf_prices=i['m_inf_price'],
                             web_names=i['web_names'][lan_],
                             web_counts=i['web_counts'],
                             web_prices=i['w_m_per_price'],
+                            web_inf_prices=i['w_m_inf_price'],
                             mobile_cassa_names=i['mobile_cassa_names'][lan_],
                             mobile_cassa_counts=i['mobile_cassa_counts'],
                             mobile_prices=i['m_c_per_price'],
+                            mobile_inf_prices=i['m_c_inf_price'],
                             tarifes_others=i['tarifes_others'], )
                     )
                     for i in temp_
