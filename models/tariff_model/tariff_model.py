@@ -4,6 +4,7 @@ from typing import Union
 from pydantic import BaseModel, validator, Field
 
 
+
 class TarifDetails(BaseModel):
     tarif_id: str = None
 
@@ -16,7 +17,6 @@ class Language(Enum):
 
 class InnerModelForTarif(BaseModel):
     """MODEL FOR INNER  CONTENT OF TARIF"""
-
     cassa_names: str = None
     cassa_counts: int = None
     cassa_prices: int = None
@@ -38,7 +38,7 @@ class InnerModelForTarif(BaseModel):
 
 class TarifModelForView(BaseModel):
     """MODEL FOR TARIFES VIEW"""
-    tarif_id: Union[str, uuid.UUID] = None
+    tarif_id: Union[str, uuid.UUID]
     tarif_names: str = None
     tarif_month_prices: int = None
     inner_content: InnerModelForTarif = None

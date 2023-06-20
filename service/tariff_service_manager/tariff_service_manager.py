@@ -15,10 +15,14 @@ class TariffServiceManager(TarifServiceInterface):
     @staticmethod
     async def get_tarifes_for_view(language)->list[TarifModelForView] | None:
         try:
+            # _tariff = RedisClient.get_pydantic_redis(TarifModelForView)
+            # print(_tariff)
+            # if _tariff:
+            #     return _tariff
             temp_ = await TariffDbManager.get_tarifes_for_view()
             lan_ = language_dict[language]
             if temp_ is not None:
-                data_for_view = [
+                _info = [
                     TarifModelForView(
                         tarif_id=i['tarif_id'],
                         tarif_names=i['tarif_names'][lan_],
@@ -44,7 +48,7 @@ class TariffServiceManager(TarifServiceInterface):
                     )
                     for i in temp_
                 ]
-                return data_for_view
+                return _info
             else:
                 return None
         except Exception as e:

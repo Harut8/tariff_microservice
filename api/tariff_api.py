@@ -2,6 +2,7 @@ from fastapi import APIRouter, Depends, HTTPException, Header
 from auth.auth import auth_required
 from models.tariff_model.tariff_model import Language, TarifDetails, PersonalTarifForCreating
 from service.tariff_service_manager.tariff_service_manager import TariffServiceManager
+from fastapi_cache.decorator import cache
 
 
 tariff_router = APIRouter(tags=["TARIFF API"], prefix="/tariff")
@@ -13,6 +14,7 @@ async def tariff_ping():
 
 
 @tariff_router.get("/get-tarifes-for-view/{language}")
+@cache(3600, namespace='tariff')
 async def get_tarifes_for_view(language: Language):
     _tarifes_for_view = await TariffServiceManager.get_tarifes_for_view(language.value)
     if not _tarifes_for_view:
